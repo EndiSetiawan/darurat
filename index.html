@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <style>
+       
+       @import url('https://fonts.googleapis.com/icon?family=Material+Icons');    
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        /* Background styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://i.top4top.io/p_3232yhxv71.jpg');
+            background-size: cover;
+        }
+        body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sesuaikan opasitas */
+    z-index: -1;
+}
+
+        /* Container for buttons */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Button styling */
+        .button {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
+
+        /* Icon styling */
+        .icon {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+           
+            overflow: hidden;
+        }
+
+        /* Image inside icon */
+        .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Name text styling */
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Background colors for buttons */
+        #merah {
+            background-color: #bd0825;
+        }
+
+        #biru {
+            background-color: #1368ce;
+        }
+
+        #kuning {
+            background-color:#fd9011;
+           
+        }
+
+        /* BAtasTambahan style untuk form enkripsi dan dekripsi */
+        #bungkus {
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Header text styling */
+        h5 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .material-symbols-outlined {
+            font-size: 48px;
+            color: red; /* Customize icon color */
+            top: -10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.7); /* Slight transparency */
+            color: #333;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00FF00; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #009900; /* Darker green on hover */
+        }
+
+        /* Style the output after decryption */
+        #output {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="form-container">
+    <div id="bungkus">
+        
+        <h5><span class="material-symbols-outlined">emergency_home</span>Emergency Web</h5>
+        <div class="form-group">
+            <label for="key">Kunci:</label>
+            <input type="password" id="key" placeholder="Masukkan kunci (16, 24, atau 32 byte)">
+        </div>
+    
+        
+    
+        <div class="form-group">
+           
+            <button onclick="decryptMessage()">LogIn</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container" id="output">
+        <!-- Hasil dekripsi atau enkripsi akan muncul di sini -->
+    </div>
+  
+    
+    <script>
+        
+        function decryptMessage() {
+            const key = document.getElementById('key').value;
+            const encryptedMessage = 'U2FsdGVkX1/kNvOusLH3a0LUG710FiH7IDViQvqZr9N5zBbQwaMzC/pQ+mTr7l+x2hpT3V4rZhzn6cwZOn0edGxZJ7g30s5jinFfcw/lOjDD3qAZuJRkCqGe00g9YjEi/NigeFCnuvkLBG/Po6Btoiwgrh4CsdJvQ9v4nLV2QU0UBgFVhlH5X/3fE+b48aEjSRcgNsRL8+Ue0ScxIIvqrHXm+UraatiXr/Nj4DopyX3Vk/BeeNhLr1/Fyggorcty9FCJWV/6FlWXZCr6P6nXQ5SjqvuCqrBHEC6gY23OijNcdihXqMnWAbJ856+EAsTgGwZ3a6wyDLEPabEjssaLEjVueqpmaza86sr5mGDSexY3+EAYcdwV8J5yUszMYfVye8caQWoVs4tvc0+raLp4S2GGaCTdfGgho39QVOn7oQvRUklifWX2vAyut5ctkv81+w9guOI28+/JOkN8lF3jEEjJUchij4Aqo/16x22yb/f52wIr7UUsVj7l/zkw5bSefI31uqGHeVj718dlihGj2qslWLFIYQC8C1guZm98DMO8FUudOhLRqpcJT6ueXpRQbGAmzyfM0RD01jptrzl7Fltq4uHe1yyce3XGIJPc9M9quh/O1mW/XCB9+USO8BVrgNJoTTl1CSO0XXdSrtWQQK4jm9+RQQzlDAZzVn6YhkG9CkM8b5Sn08pZldHxXVa3jC3//KRzXC0E/1hRgd1IUWK8xLT9R1L883BmPyxuOzOkeofmKvwKdrOVgksteF9ZlM+llpw6qF+KIg5G5gY6okJhZQacY5OWWSmGmsmkoYBOndR14zKX1fglBWA3ffKJHry3RiLAkH3dTUR0jJ3RUmEw6AwScbjrFchOR0xbyCyxZvChM6w1Xbq6XXk+AAT8SpJQnu23k8TbLTTgKEoowHh+dFnGFYrmRVbExy+otgEZED2ZQsqW2f7KTtfmXEvVnelpGQ6PV02RuVZ8PTgPGh+DiUBznXegMOBzPIhlgll8+J0ZV+jyPpuV+oiqKfDVgKOohX7IDnQwJcXRWyZSUMPaPfnSSh+bXVZCDO3QB9MGB/kN/4auQPyIiQ/y92Wplb+BHxMreuBrxhW45DP85d85Ij95hmG1D+jHxMA2vOxkf6c6iyyfWCnT+I0v/UtbK3H7fMBT3CcZ8LpP0B1fJ8RKSzII4zU68jioryl91MN0tW4Ra/XqH8pRAsnpd3iO';
+            
+            if (!key || !encryptedMessage) {
+                alert("Kunci dan pesan tidak boleh kosong!");
+                return;
+            }
+
+            try {
+                const bytes = CryptoJS.AES.decrypt(encryptedMessage, key);
+                const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = decrypted; // Menambahkan hasil dekripsi sebagai HTML
+                
+            } catch (error) {
+                alert("Terjadi kesalahan: " + error.message);
+            }
+
+            const login = document.getElementById('bungkus');
+            login.style.display = 'none';
+        }
+
+        // Include CryptoJS library
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js';
+        document.head.appendChild(script);
+
+        
+    </script>
+
+
+</body>
+</html>

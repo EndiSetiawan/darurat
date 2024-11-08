@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+       
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: rgb(54, 52, 52);
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    /* Grid container for cards */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    /* Contact card styling */
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .contact-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* User icon */
+    .user-icon {
+      font-size: 30px;
+      color: #4fa3d8;
+      background-color: #e0f7fa;
+      border-radius: 50%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    /* User information container */
+    .user-info {
+      text-align: center;
+    }
+
+    .user-info h2 {
+      font-size: 14px;
+      color: #333333;
+      margin: 0;
+    }
+
+    .user-info p {
+      font-size: 12px;
+      color: #888888;
+      margin: 5px 0;
+    }
+
+    /* Chat button */
+    .chat-btn {
+      display: flex;
+      align-items: center;
+      background-color: #25d366;
+      color: #ffffff;
+      padding: 6px 8px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 12px;
+      margin-top: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .chat-btn:hover {
+      background-color: #1ebe59;
+    }
+
+    .chat-btn i {
+      margin-right: 4px;
+      font-size: 14px;
+    }
+
+    /* Responsiveness for very small screens */
+    @media (max-width: 400px) {
+      .contact-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+        /* BAtasTambahan style untuk form enkripsi dan dekripsi */
+        #bungkus {
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Header text styling */
+        h5 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .material-symbols-outlined {
+            font-size: 48px;
+            color: red; /* Customize icon color */
+            top: -10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.7); /* Slight transparency */
+            color: #333;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00FF00; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #009900; /* Darker green on hover */
+        }
+
+        /* Style the output after decryption */
+        #output {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="form-container">
+    <div id="bungkus">
+        
+        <h5><span class="material-symbols-outlined">emergency_home</span>Emergency Web</h5>
+        <div class="form-group">
+            <label for="key">Kunci:</label>
+            <input type="password" id="key" placeholder="Masukkan kunci (16, 24, atau 32 byte)">
+        </div>
+    
+        
+    
+        <div class="form-group">
+           
+            <button onclick="decryptMessage()">LogIn</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container" id="output">
+        <!-- Hasil dekripsi atau enkripsi akan muncul di sini -->
+    </div>
+  
+    
+    <script>
+        
+        function decryptMessage() {
+            const key = document.getElementById('key').value;
+            const encryptedMessage = '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';
+            
+            if (!key || !encryptedMessage) {
+                alert("Kunci dan pesan tidak boleh kosong!");
+                return;
+            }
+
+            try {
+                const bytes = CryptoJS.AES.decrypt(encryptedMessage, key);
+                const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = decrypted; // Menambahkan hasil dekripsi sebagai HTML
+                
+            } catch (error) {
+                alert("Terjadi kesalahan: " + error.message);
+            }
+
+            const login = document.getElementById('bungkus');
+            login.style.display = 'none';
+        }
+
+        // Include CryptoJS library
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js';
+        document.head.appendChild(script);
+
+        
+    </script>
+
+
+</body>
+</html>

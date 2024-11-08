@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+       
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        header .header-icon {
+            font-size: 30px;
+            color: #00FF00;
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: #fff;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .file-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .file-item {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .file-item:hover {
+            transform: scale(1.05);
+        }
+
+        .file-item span.material-icons {
+            font-size: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .file-name {
+            flex-grow: 1;
+            font-size: 16px;
+            margin-left: 15px;
+        }
+
+        .download-btn {
+            background-color: #00FF00;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .download-btn:hover {
+            background-color: #009900;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Warna Ikon Berdasarkan Jenis File */
+        .file-item.audio span.material-icons {
+            color: #FF5722; /* Warna ikon audio */
+        }
+
+        .file-item.image span.material-icons {
+            color: #2196F3; /* Warna ikon gambar */
+        }
+
+        .file-item.pdf span.material-icons {
+            color: #D32F2F; /* Warna ikon PDF */
+        }
+
+        .file-item.document span.material-icons {
+            color:#f7d166; /* Warna ikon dokumen umum */
+        }
+
+        .file-item.blue span.material-icons {
+    color: #1887e5; /* Warna biru */
+}
+
+        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .header-icon {
+                font-size: 25px;
+                margin-top: 5px;
+            }
+
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px;
+            }
+
+            .file-name {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .download-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+            }
+        }
+
+        /* BAtasTambahan style untuk form enkripsi dan dekripsi */
+        #bungkus {
+            background: rgba(255, 255, 255, 0.1); /* Transparent background */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: #fff;
+        }
+
+        /* Header text styling */
+        h5 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .material-symbols-outlined {
+            font-size: 48px;
+            color: red; /* Customize icon color */
+            top: -10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ddd;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.7); /* Slight transparency */
+            color: #333;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00FF00; /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #009900; /* Darker green on hover */
+        }
+
+        /* Style the output after decryption */
+        #output {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="form-container">
+    <div id="bungkus">
+        
+        <h5><span class="material-symbols-outlined">emergency_home</span>Emergency Web</h5>
+        <div class="form-group">
+            <label for="key">Kunci:</label>
+            <input type="password" id="key" placeholder="Masukkan kunci (16, 24, atau 32 byte)">
+        </div>
+    
+        
+    
+        <div class="form-group">
+           
+            <button onclick="decryptMessage()">LogIn</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container" id="output">
+        <!-- Hasil dekripsi atau enkripsi akan muncul di sini -->
+    </div>
+  
+    
+    <script>
+        
+        function decryptMessage() {
+            const key = document.getElementById('key').value;
+            const encryptedMessage = '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';
+            
+            if (!key || !encryptedMessage) {
+                alert("Kunci dan pesan tidak boleh kosong!");
+                return;
+            }
+
+            try {
+                const bytes = CryptoJS.AES.decrypt(encryptedMessage, key);
+                const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = decrypted; // Menambahkan hasil dekripsi sebagai HTML
+                
+            } catch (error) {
+                alert("Terjadi kesalahan: " + error.message);
+            }
+
+            const login = document.getElementById('bungkus');
+            login.style.display = 'none';
+        }
+
+        // Include CryptoJS library
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js';
+        document.head.appendChild(script);
+
+        
+    </script>
+
+
+</body>
+</html>
